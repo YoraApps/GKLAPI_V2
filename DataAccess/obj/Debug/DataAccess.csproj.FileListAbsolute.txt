@@ -1,0 +1,17 @@
+E:\NARI\GurkulV2\GurukulV2\DataAccess\bin\Debug\DataAccess.dll
+E:\NARI\GurkulV2\GurukulV2\DataAccess\bin\Debug\DataAccess.pdb
+E:\NARI\GurkulV2\GurukulV2\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+E:\NARI\GurkulV2\GurukulV2\DataAccess\obj\Debug\DataAccess.dll
+E:\NARI\GurkulV2\GurukulV2\DataAccess\obj\Debug\DataAccess.pdb
+E:\NARI\GurkulV2\GurukulV2\DataAccess\bin\Debug\DTO.dll
+E:\NARI\GurkulV2\GurukulV2\DataAccess\bin\Debug\DTO.pdb
+E:\NARI\GurkulV2\GurukulV2\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+E:\NARI\GurkulV2\GurukulV2\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\bin\Debug\DataAccess.dll
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\bin\Debug\DataAccess.pdb
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\bin\Debug\DTO.dll
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\bin\Debug\DTO.pdb
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\obj\Debug\DataAccess.dll
+F:\Vipin\SchoolERPAPI\GurukulAPIV2\DataAccess\obj\Debug\DataAccess.pdb
