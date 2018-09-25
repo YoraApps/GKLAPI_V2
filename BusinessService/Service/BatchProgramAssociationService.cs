@@ -7,31 +7,21 @@ using DTO.Entity;
 using DataAccess.DataSource;
 namespace BusinessService.Service
 {
-    public class BatchProgramAssociationService:IBatchProgramAssociation
+    public class BatchProgramAssociationService : IBatchProgramAssociation
     {
-        public int InsertBatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
+        public List<BatchProgramAssociation> GetProgramBatchNotMapped(int BatchId)
         {
-            return BatchProgramAssociationDS.InsertBatchProgramAssociationDS(batchProgramAssociation);
+           return BatchProgramAssociationDS.GetProgramBatchNotMapped(BatchId);
         }
 
-        public int UpdateBatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
+        public List<BatchProgramAssociation> GetProgramByBatch(int BatchId)
         {
-            return BatchProgramAssociationDS.UpdateBatchProgramAssociationDS(batchProgramAssociation);
+            return BatchProgramAssociationDS.GetProgramByBatch(BatchId);
         }
 
-        public int DeleteBatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
+        public string UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
         {
-            return BatchProgramAssociationDS.DeleteBatchProgramAssociationDS(batchProgramAssociation);
-        }
-
-        public List<BatchProgramAssociation> GetByIdBatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
-        {
-            return BatchProgramAssociationDS.SelectIdByBatchProgramAssociationDS(batchProgramAssociation);
-        }
-
-        public List<BatchProgramAssociation> GetAllBatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
-        {
-            return BatchProgramAssociationDS.SelectAllProgramAssociationDS(batchProgramAssociation);
+            return BatchProgramAssociationDS.UpdateProgramBatchAssociation(batchProgramAssociation);
         }
     }
 }

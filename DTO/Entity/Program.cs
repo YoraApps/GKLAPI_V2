@@ -9,9 +9,9 @@ namespace DTO.Entity
     public class Program
     {
         public string SetAction { get; set; }
-        public int ProgrameId { get; set; }
-        public string ProgrameCode { get; set; }
-        public string ProgrameName { get; set; }
+        public int ProgramId { get; set; }
+        public string ProgramCode { get; set; }
+        public string ProgramName { get; set; }
         public bool Active { get; set; }
         public int DegreeTypeId { get; set; }
         public string DegreeTypeCode { get; set; }

@@ -22,9 +22,9 @@ namespace DataAccess.DataSource
             objlm = ds.Tables[0].AsEnumerable()
             .Select(row => new Program
             {
-                ProgrameId = row.Field<int>("ProgrameId"),
-                ProgrameCode = Common.ConvertFromDBVal<string>(row["ProgrameCode"]),
-                ProgrameName = Common.ConvertFromDBVal<string>(row["ProgrameName"]),
+                ProgramId = row.Field<int>("ProgramId"),
+                ProgramCode = Common.ConvertFromDBVal<string>(row["ProgramCode"]),
+                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"]),
                 Active = row.Field<bool>("Active"),
                 DegreeTypeId = row.Field<int>("DegreeTypeId"),
                 DegreeTypeCode = Common.ConvertFromDBVal<string>(row["DegreeTypeCode"]),
@@ -41,9 +41,9 @@ namespace DataAccess.DataSource
 
             SqlParameter[] sqlParameter = {
                             new SqlParameter("@SetAction", program.SetAction.ToUpper()),
-                            new SqlParameter("@ProgrameId", program.ProgrameId),
-                            new SqlParameter("@ProgrameCode", program.ProgrameCode),
-                            new SqlParameter("@ProgrameName", program.ProgrameName),
+                            new SqlParameter("@ProgramId", program.ProgramId),
+                            new SqlParameter("@ProgramCode", program.ProgramCode),
+                            new SqlParameter("@ProgramName", program.ProgramName),
                             new SqlParameter("@DegreeTypeId", program.DegreeTypeId),
             };
 
