@@ -13,88 +13,60 @@ namespace DataAccess.DataSource
 {
     public class BatchProgramAssociationDS
     {
-        public static int InsertBatchProgramAssociationDS(BatchProgramAssociation batchProgramAssociation)
-        {
+       public static List<BatchProgramAssociation> GetProgramByBatch(int BatchId)
+       {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
-            batchProgramAssociation.SetAction = "INSERT";
-            SqlParameter[] sqlParameter = {
-                            new SqlParameter("@SetAction", batchProgramAssociation.SetAction.ToUpper()),
-                            new SqlParameter("@BatchProgramAssociationId", batchProgramAssociation.BatchProgramAssociationId),
-                            new SqlParameter("@BatchId", batchProgramAssociation.BatchId),
-                            new SqlParameter("@ProgramId ", batchProgramAssociation.ProgramId)
-            };
-            Object obj = objHelper.ExecScalarProc("Gkl_USP_UpdateBatchProgramAssociation", sqlParameter);
-            int strRes = (int)obj;
-            objHelper.Dispose();
-            return strRes;
-        }
-
-        public static int UpdateBatchProgramAssociationDS(BatchProgramAssociation batchProgramAssociation)
-        {
-            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
-            batchProgramAssociation.SetAction = "UPDATE";
-            SqlParameter[] sqlParameter = {
-                            new SqlParameter("@SetAction", batchProgramAssociation.SetAction.ToUpper()),
-                            new SqlParameter("@BatchProgramAssociationId", batchProgramAssociation.BatchProgramAssociationId),
-                            new SqlParameter("@BatchId", batchProgramAssociation.BatchId),
-                            new SqlParameter("@ProgramId ", batchProgramAssociation.ProgramId)
-            };
-            Object obj = objHelper.ExecScalarProc("Gkl_USP_UpdateBatchProgramAssociation", sqlParameter);
-            int strRes = (int)obj;
-            objHelper.Dispose();
-            return strRes;
-        }
-
-        public static int DeleteBatchProgramAssociationDS(BatchProgramAssociation batchProgramAssociation)
-        {
-            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
-            batchProgramAssociation.SetAction = "DELETE";
-            SqlParameter[] sqlParameter = {
-                            new SqlParameter("@SetAction", batchProgramAssociation.SetAction.ToUpper()),
-                            new SqlParameter("@BatchProgramAssociationId", batchProgramAssociation.BatchProgramAssociationId),
-                            new SqlParameter("@BatchId", batchProgramAssociation.BatchId),
-                            new SqlParameter("@ProgramId ", batchProgramAssociation.ProgramId)
-            };
-            Object obj = objHelper.ExecScalarProc("Gkl_USP_UpdateBatchProgramAssociation", sqlParameter);
-            int strRes = (int)obj;
-            objHelper.Dispose();
-            return strRes;
-        }
-
-        public static List <BatchProgramAssociation> SelectIdByBatchProgramAssociationDS(BatchProgramAssociation batchProgramAssociation)
-        {
-            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
-            batchProgramAssociation.SetAction = "SELECTBYID";
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("GKL_USP_GetBatchProgramAssociation");
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch");
 
             List<BatchProgramAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
             .Select(row => new BatchProgramAssociation
             {
-                BatchProgramAssociationId = row.Field<int>("BatchProgramAssociationId"),
-                BatchId = Common.ConvertFromDBVal<string>(row["BatchId"]),
-                ProgramId = Common.ConvertFromDBVal<string>(row["ProgramId"]),
-                SetAction = row.Field<string>("SetAction")
+                BatchId = row.Field<int>("BatchId"),
+                ProgramId = row.Field<int>("ProgramId"),
+                ProgramCode = Common.ConvertFromDBVal<string>(row["ProgramCode"]),
+                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"]),
+                Active = row.Field<bool>("Active")
+
             }).ToList();
+
             return objlm;
         }
+        public static string UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
+        {
+            var Programs = batchProgramAssociation.ProgramIds.TrimEnd(',');
 
-        public static List<BatchProgramAssociation> SelectAllProgramAssociationDS(BatchProgramAssociation batchProgramAssociation)
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@SetAction", batchProgramAssociation.SetAction.ToUpper()),
+                            new SqlParameter("@ProgramIds", Programs),
+                            new SqlParameter("@BatchId", batchProgramAssociation.BatchId)
+            };
+
+            Object obj = objHelper.ExecScalarProc("Gkl_USP_UpdateProgramBatchAssociation", sqlParameter);
+            string status = "updated";
+            objHelper.Dispose();
+            return status;
+        }
+        public static List<BatchProgramAssociation> GetProgramBatchNotMapped(int BatchId)
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
-            batchProgramAssociation.SetAction = "SELECTALL";
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("GKL_USP_GetBatchProgramAssociation");
+
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch");
+
             List<BatchProgramAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
             .Select(row => new BatchProgramAssociation
             {
-                BatchProgramAssociationId = row.Field<int>("BatchProgramAssociationId"),
-                BatchId = Common.ConvertFromDBVal<string>(row["BatchId"]),
-                ProgramId = Common.ConvertFromDBVal<string>(row["ProgramId"]),
-                SetAction = row.Field<string>("SetAction")
+                ProgramId = row.Field<int>("ProgramId"),
+                ProgramCode = Common.ConvertFromDBVal<string>(row["ProgramCode"]),
+                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"]),
+
             }).ToList();
+
             return objlm;
         }
     }

@@ -13,35 +13,20 @@ namespace API.Controllers
     public class BatchProgramAssociationController : ApiController
     {
         private IBatchProgramAssociation batchProgramAssociationService = new BatchProgramAssociationService();
-        
-        [HttpPut]
-        public IHttpActionResult InsertbatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
-        {
-            return Ok(new { results = batchProgramAssociationService.InsertBatchProgramAssociation(batchProgramAssociation) });
-        }
 
+        [HttpGet]
+        public IHttpActionResult GetProgramByBatch(int BatchId)
+        {
+            return Ok(new { results = batchProgramAssociationService.GetProgramByBatch(BatchId) });
+        }
+        public IHttpActionResult GetProgramBatchNotMapped(int BatchId)
+        {
+            return Ok(new { results = batchProgramAssociationService.GetProgramBatchNotMapped(BatchId) });
+        }
         [HttpPost]
-        public IHttpActionResult UpdatebatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
+        public IHttpActionResult UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
         {
-            return Ok(new { results = batchProgramAssociationService.InsertBatchProgramAssociation(batchProgramAssociation) });
-        }
-
-        [HttpDelete]
-        public IHttpActionResult DeletebatchProgramAssociation(BatchProgramAssociation batchProgramAssociation)
-        {
-            return Ok(new { results = batchProgramAssociationService.InsertBatchProgramAssociation(batchProgramAssociation) });
-        }
-
-        [HttpGet]
-        public IHttpActionResult GetById(BatchProgramAssociation batchProgramAssociation)
-        {
-            return Ok(new { results = batchProgramAssociationService.GetAllBatchProgramAssociation(batchProgramAssociation) });
-        }
-
-        [HttpGet]
-        public IHttpActionResult GetAll(BatchProgramAssociation batchProgramAssociation)
-        {
-            return Ok(new { results = batchProgramAssociationService.GetByIdBatchProgramAssociation(batchProgramAssociation) });
+            return Ok(new { results = batchProgramAssociationService.UpdateProgramBatchAssociation(batchProgramAssociation) });
         }
     }
 }

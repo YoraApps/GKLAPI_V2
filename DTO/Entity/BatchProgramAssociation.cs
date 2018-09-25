@@ -9,8 +9,13 @@ namespace DTO.Entity
     public class BatchProgramAssociation
     {
         public int BatchProgramAssociationId { get; set; }
-        public string BatchId { get; set; }
-        public string ProgramId { get; set; }
+        public int BatchId { get; set; }
+        public int ProgramId { get; set; }
         public string SetAction { get; set; }
+        public string ProgramIds { get; set; }
+        public string ProgramCode { get; set; }
+        public string ProgramName { get; set; }
+        public bool Active { get; set; }
+
     }
 }
