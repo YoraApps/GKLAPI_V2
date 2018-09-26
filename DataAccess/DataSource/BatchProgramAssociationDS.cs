@@ -17,17 +17,18 @@ namespace DataAccess.DataSource
        {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch");
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@BatchId", BatchId)
+            };
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBatch", sqlParameter);
 
             List<BatchProgramAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
             .Select(row => new BatchProgramAssociation
             {
-                BatchId = row.Field<int>("BatchId"),
                 ProgramId = row.Field<int>("ProgramId"),
                 ProgramCode = Common.ConvertFromDBVal<string>(row["ProgramCode"]),
-                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"]),
-                Active = row.Field<bool>("Active")
+                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"])
 
             }).ToList();
 
@@ -55,7 +56,7 @@ namespace DataAccess.DataSource
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
 
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch");
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramBatchNotMapped");
 
             List<BatchProgramAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
