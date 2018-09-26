@@ -16,6 +16,11 @@ namespace BusinessService.Service
             return ProgramDS.GetAllProgram();
         }
 
+        public List<Program> GetProgramByDegree(int DegreeTypeId)
+        {
+            return ProgramDS.GetProgramByDegree(DegreeTypeId);
+        }
+
         public string InUpProgram(Program program)
         {
             return ProgramDS.UpdateProgram(program);

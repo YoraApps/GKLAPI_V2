@@ -11,5 +11,6 @@ namespace BusinessService.IService
     {
         List<Program> GetProgram();
         string InUpProgram(Program program);
+        List<Program> GetProgramByDegree(int DegreeTypeId);
     }
 }
