@@ -30,5 +30,12 @@ namespace API.Controllers
         {
             return Ok(new { results = batchService.InUpBatch(batch) });
         }
+
+        //Active Batch
+        [HttpGet]
+        public IHttpActionResult GetActiveBatch()
+        {
+            return Ok(new { results = batchService.GetActiveBatch() });
+        }
     }
 }

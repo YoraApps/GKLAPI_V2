@@ -63,5 +63,24 @@ namespace DataAccess.DataSource
             objHelper.Dispose();
             return status;
         }
+        //Active Batch
+        public static List<Batch> GetActiveBatch()
+        {
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
+            ds = objHelper.ExecDataSetProc("Gkl_USP_ActiveBatchList");
+
+            List<Batch> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new Batch
+            {
+                BatchId = row.Field<int>("BatchId"),
+                AcademicYearId = row.Field<int>("AcademicYearId"),
+                AcademicYear = Common.ConvertFromDBVal<string>(row["AcademicYear"])
+
+            }).ToList();
+
+            return objlm;
+        }
     }
 }

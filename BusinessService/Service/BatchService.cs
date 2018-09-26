@@ -16,6 +16,11 @@ namespace BusinessService.Service
             return BatchDS.GetAllAcademicYear();
         }
 
+        public List<Batch> GetActiveBatch()
+        {
+            return BatchDS.GetActiveBatch();
+        }
+
         public List<Batch> GetBatch()
         {
             return BatchDS.GetAllBatch();
