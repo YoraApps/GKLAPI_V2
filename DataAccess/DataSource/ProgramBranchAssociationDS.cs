@@ -12,11 +12,15 @@ namespace DataAccess.DataSource
 {
     public class ProgramBranchAssociationDS
     {
-        public static List<ProgramBranchAssociation> GetProgramByBranch(int BranchId)
+        public static List<ProgramBranchAssociation> GetProgramByBranch(int ProgramId)
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch");
+            SqlParameter[] sqlParameter = {
+                new SqlParameter("@ProgramId",ProgramId)
+            };
+
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch", sqlParameter);
 
             List<ProgramBranchAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
@@ -51,12 +55,15 @@ namespace DataAccess.DataSource
             return status;
         }
 
-        public static List<ProgramBranchAssociation> GetProgramBranchNotMapped(int BranchId)
+        public static List<ProgramBranchAssociation> GetProgramBranchNotMapped(int ProgramId)
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
+            SqlParameter[] sqlParameter = {
+                new SqlParameter("@ProgramId",ProgramId)
+            };
 
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramBranchNotMapped");
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramBranchNotMapped", sqlParameter);
 
             List<ProgramBranchAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
