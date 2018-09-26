@@ -15,14 +15,14 @@ namespace API.Controllers
         private IProgramBranchAssociationService programBranchAssociationService = new ProgramBranchAssociationService();
 
         [HttpGet]
-        public IHttpActionResult GetProgramByBranch(int BranchId)
+        public IHttpActionResult GetProgramByBranch(int ProgramId)
         {
-            return Ok(new { results = programBranchAssociationService.GetProgramByBranch(BranchId) });
+            return Ok(new { results = programBranchAssociationService.GetProgramByBranch(ProgramId) });
         }
 
-        public IHttpActionResult GetProgramBranchNotMapped(int BranchId)
+        public IHttpActionResult GetProgramBranchNotMapped(int ProgramId)
         {
-            return Ok(new { results = programBranchAssociationService.GetProgramBranchNotMapped(BranchId) });
+            return Ok(new { results = programBranchAssociationService.GetProgramBranchNotMapped(ProgramId) });
         }
 
         [HttpPost]
