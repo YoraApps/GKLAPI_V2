@@ -18,7 +18,7 @@ namespace DataAccess.DataSource
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
             SqlParameter[] sqlParameter = {
-                            new SqlParameter("@BatchId", BatchId)
+                            new SqlParameter("@BatchId",BatchId)
             };
             ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBatch", sqlParameter);
 
