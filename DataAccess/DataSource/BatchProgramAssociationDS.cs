@@ -60,7 +60,7 @@ namespace DataAccess.DataSource
                             new SqlParameter("@BatchId",BatchId)
             };
 
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch", sqlParameter);
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramBatchNotMapped", sqlParameter);
 
             List<BatchProgramAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
