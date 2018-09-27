@@ -56,6 +56,7 @@ namespace DataAccess.DataSource
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
+
             SqlParameter[] sqlParameter = {
                             new SqlParameter("@BatchId",BatchId)
             };
@@ -63,6 +64,7 @@ namespace DataAccess.DataSource
             ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramBatchNotMapped", sqlParameter);
 
             List<BatchProgramAssociation> objlm = null;
+
             objlm = ds.Tables[0].AsEnumerable()
             .Select(row => new BatchProgramAssociation
             {

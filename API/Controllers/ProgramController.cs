@@ -24,5 +24,10 @@ namespace API.Controllers
         {
             return Ok(new { results = programService.InUpProgram(program) });
         }
+        [HttpGet]
+        public IHttpActionResult GetProgramByDegrees(int DegreeTypeId)
+        {
+            return Ok(new { results = programService.GetProgramByDegree(DegreeTypeId) });
+        }
     }
 }

@@ -34,6 +34,33 @@ namespace DataAccess.DataSource
 
             return objlm;
         }
+        public static List<Program> GetProgramByDegree(int DegreeTypeId)
+        {
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
+
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@DegreeTypeId", DegreeTypeId)
+            };
+
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByDegree", sqlParameter);
+
+            List<Program> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new Program
+            {
+                ProgramId = row.Field<int>("ProgramId"),
+                ProgramCode = Common.ConvertFromDBVal<string>(row["ProgramCode"]),
+                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"]),
+                Active = row.Field<bool>("Active"),
+                DegreeTypeId = row.Field<int>("DegreeTypeId"),
+                DegreeTypeCode = Common.ConvertFromDBVal<string>(row["DegreeTypeCode"]),
+                DegreeTypeName = Common.ConvertFromDBVal<string>(row["DegreeTypeName"]),
+
+            }).ToList();
+
+            return objlm;
+        }
 
         public static string UpdateProgram(Program program)
         {
