@@ -16,7 +16,11 @@ namespace DataAccess.DataSource
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch");
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@BranchId",BranchId)
+            };
+
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramByBranch", sqlParameter);
 
             List<ProgramBranchAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
@@ -56,6 +60,10 @@ namespace DataAccess.DataSource
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
 
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@BranchId",BranchId)
+            };
+            
             ds = objHelper.ExecDataSetProc("Gkl_USP_GetProgramBranchNotMapped");
 
             List<ProgramBranchAssociation> objlm = null;
