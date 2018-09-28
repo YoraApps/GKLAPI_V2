@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DTO.Entity
+{
+    public class Course
+    {
+        public string SetAction { get; set; }
+        public int CourseId { get; set; }
+        public string CourseCode { get; set; }
+        public string CourseName { get; set; }
+        public int CourseTypeId { get; set; }
+        public bool Active { get; set; }
+        public string CourseType { get; set; }
+        
+    }
+}
