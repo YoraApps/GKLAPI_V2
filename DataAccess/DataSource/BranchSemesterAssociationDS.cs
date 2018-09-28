@@ -28,8 +28,7 @@ namespace DataAccess.DataSource
                 BranchId = row.Field<int>("BranchId"),
                 SemesterId = row.Field<int>("SemesterId"),
                 SemesterCode = Common.ConvertFromDBVal<string>(row["SemesterCode"]),
-                SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"]),
-                Active = row.Field<bool>("Active")
+                SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"])
 
             }).ToList();
 
