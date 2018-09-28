@@ -14,6 +14,11 @@ namespace API.Controllers
     {
         private IDegreeTypeService degreetypeService = new DegreeTypeService();
         [HttpGet]
+        public IHttpActionResult Get(int? id)
+        {
+            return Ok(new { results = degreetypeService.GetDegreeTypeByCategory(id) });
+        }
+        [HttpGet]
         public IHttpActionResult Get()
         {
             return Ok(new { results = degreetypeService.GetDegreeType() });

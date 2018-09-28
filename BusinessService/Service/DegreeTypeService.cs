@@ -16,6 +16,11 @@ namespace BusinessService.Service
             return DegreeTypeDS.GetAllDegreeType();
         }
 
+        public List<DegreeType> GetDegreeTypeByCategory(int? id)
+        {
+            return DegreeTypeDS.GetDegreeTypeByCategory(id);
+        }
+
         public string InUpDegreeType(DegreeType degreetype)
         {
             return DegreeTypeDS.UpdateDegreeType(degreetype);

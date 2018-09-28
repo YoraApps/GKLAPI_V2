@@ -10,6 +10,7 @@ namespace BusinessService.IService
     public interface IDegreeTypeService
     {
         List<DegreeType> GetDegreeType();
+        List<DegreeType> GetDegreeTypeByCategory(int? id);
         string InUpDegreeType(DegreeType degreetype);
     }
 }

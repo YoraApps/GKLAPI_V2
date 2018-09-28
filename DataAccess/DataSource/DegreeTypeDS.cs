@@ -12,6 +12,33 @@ namespace DataAccess.DataSource
 {
     public class DegreeTypeDS
     {
+        public static List<DegreeType> GetDegreeTypeByCategory(int? id)
+        {
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@DegreeCategoryId", id)
+
+            };
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetDegreeTypeByCategory", sqlParameter);
+
+            List<DegreeType> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new DegreeType
+            {
+                DegreeTypeId = row.Field<int>("DegreeTypeId"),
+                DegreeTypeCode = Common.ConvertFromDBVal<string>(row["DegreeTypeCode"]),
+                DegreeTypeName = Common.ConvertFromDBVal<string>(row["DegreeTypeName"]),
+                Active = row.Field<bool>("Active"),
+                DegreeCategoryId = row.Field<int>("DegreeCategoryId")
+
+
+            }).ToList();
+
+            return objlm;
+        }
+
+
         public static List<DegreeType> GetAllDegreeType()
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
