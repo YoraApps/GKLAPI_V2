@@ -30,8 +30,7 @@ namespace DataAccess.DataSource
                 ProgramId = row.Field<int>("ProgramId"),
                 BranchId = row.Field<int>("BranchId"),
                 BranchCode = Common.ConvertFromDBVal<string>(row["BranchCode"]),
-                BranchName = Common.ConvertFromDBVal<string>(row["BranchName"]),
-                Active = row.Field<bool>("Active")
+                BranchName = Common.ConvertFromDBVal<string>(row["BranchName"])
 
             }).ToList();
 
