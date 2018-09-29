@@ -35,22 +35,31 @@ namespace DataAccess.DataSource
 
             return objlm;
         }
-        public static string UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
+        public static List<BatchProgramAssociation> UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
         {
-            var Programs = batchProgramAssociation.ProgramIds.TrimEnd(',');
-
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
 
             SqlParameter[] sqlParameter = {
                             new SqlParameter("@SetAction", batchProgramAssociation.SetAction.ToUpper()),
-                            new SqlParameter("@ProgramIds", Programs),
+                            new SqlParameter("@ProgramIds", batchProgramAssociation.ProgramIds),
                             new SqlParameter("@BatchId", batchProgramAssociation.BatchId)
             };
 
-            Object obj = objHelper.ExecScalarProc("Gkl_USP_UpdateProgramBatchAssociation", sqlParameter);
-            string status = "updated";
-            objHelper.Dispose();
-            return status;
+            ds = objHelper.ExecDataSetProc("Gkl_USP_UpdateProgramBatchAssociation", sqlParameter);
+
+            List<BatchProgramAssociation> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new BatchProgramAssociation
+            {
+                BatchId = row.Field<int>("BatchId"),
+                ProgramId = row.Field<int>("ProgramId"),
+                ProgramCode = Common.ConvertFromDBVal<string>(row["ProgramCode"]),
+                ProgramName = Common.ConvertFromDBVal<string>(row["ProgramName"])
+
+            }).ToList();
+
+            return objlm;
         }
         public static List<BatchProgramAssociation> GetProgramBatchNotMapped(int BatchId)
         {

@@ -10,7 +10,7 @@ namespace BusinessService.IService
    public interface IBatchProgramAssociation
     {
         List<BatchProgramAssociation> GetProgramByBatch(int BatchId);
-        string UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation);
+        List<BatchProgramAssociation> UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation);
         List<BatchProgramAssociation> GetProgramBatchNotMapped(int BatchId);
     }
 }
