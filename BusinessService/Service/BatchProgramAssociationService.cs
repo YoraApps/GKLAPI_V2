@@ -19,7 +19,7 @@ namespace BusinessService.Service
             return BatchProgramAssociationDS.GetProgramByBatch(BatchId);
         }
 
-        public string UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
+        public List<BatchProgramAssociation> UpdateProgramBatchAssociation(BatchProgramAssociation batchProgramAssociation)
         {
             return BatchProgramAssociationDS.UpdateProgramBatchAssociation(batchProgramAssociation);
         }

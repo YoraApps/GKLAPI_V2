@@ -39,14 +39,14 @@ namespace DataAccess.DataSource
 
         public static string UpdateProgramBranchAssociation(ProgramBranchAssociation programBranchAssociation)
         {
-            var Programs = programBranchAssociation.ProgramIds.TrimEnd(',');
+            
 
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
 
             SqlParameter[] sqlParameter = {
                             new SqlParameter("@SetAction", programBranchAssociation.SetAction.ToUpper()),
-                            new SqlParameter("@ProgramIds", Programs),
-                            new SqlParameter("@BranchId", programBranchAssociation.BranchId)
+                            new SqlParameter("@ProgramId", programBranchAssociation.ProgramId),
+                            new SqlParameter("@BranchIds", programBranchAssociation.BranchIds)
             };
 
             Object obj = objHelper.ExecScalarProc("Gkl_USP_UpdateProgramBranchAssociation", sqlParameter);
