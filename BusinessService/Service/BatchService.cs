@@ -26,7 +26,7 @@ namespace BusinessService.Service
             return BatchDS.GetAllBatch();
         }
 
-        public string InUpBatch(Batch batch)
+        public List<Batch> InUpBatch(Batch batch)
         {
             return BatchDS.UpdateBatch(batch);
         }

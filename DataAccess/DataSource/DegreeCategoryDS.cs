@@ -38,7 +38,7 @@ namespace DataAccess.DataSource
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
 
             SqlParameter[] sqlParameter = {
-                            new SqlParameter("@GetAction", degreeCategory.GetAction.ToUpper()),
+                            new SqlParameter("@SetAction", degreeCategory.SetAction.ToUpper()),
                             new SqlParameter("@DegreeCategoryId", degreeCategory.DegreeCategoryId),
                             new SqlParameter("@DegreeCategoryCode", degreeCategory.DegreeCategoryCode),
                             new SqlParameter("@DegreeCategoryName ", degreeCategory.DegreeCategoryName)

@@ -8,7 +8,7 @@ namespace DTO.Entity
 {
     public class Branch
     {
-        public string GetAction { get; set; }
+        public string SetAction { get; set; }
         public int BranchId { get; set; }
         public string BranchCode { get; set; }
         public string BranchName { get; set; }

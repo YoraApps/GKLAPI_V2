@@ -37,7 +37,7 @@ namespace DataAccess.DataSource
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
 
             SqlParameter[] sqlParameter = {
-                            new SqlParameter("@GetAction", branch.GetAction.ToUpper()),
+                            new SqlParameter("@SetAction", branch.SetAction.ToUpper()),
                             new SqlParameter("@BranchId", branch.BranchId),
                             new SqlParameter("@BranchCode", branch.BranchCode),
                             new SqlParameter("@BranchName ", branch.BranchName)

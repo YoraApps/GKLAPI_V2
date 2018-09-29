@@ -8,7 +8,7 @@ namespace DTO.Entity
 {
   public  class DegreeCategory
     {
-        public string GetAction { get; set; }
+        public string SetAction { get; set; }
         public int DegreeCategoryId { get; set; }
         public string DegreeCategoryCode { get; set; }
         public string DegreeCategoryName { get; set; }
