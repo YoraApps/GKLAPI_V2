@@ -44,7 +44,7 @@ namespace DataAccess.DataSource
 
             SqlParameter[] sqlParameter = {
                             new SqlParameter("@SetAction", programBranchAssociation.SetAction.ToUpper()),
-                            new SqlParameter("@ProgramIds", programBranchAssociation.ProgramIds),
+                            new SqlParameter("@BranchIds", programBranchAssociation.BranchIds),
                             new SqlParameter("@ProgramId", programBranchAssociation.ProgramId)
             };
 
