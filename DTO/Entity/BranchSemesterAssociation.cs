@@ -12,7 +12,7 @@ namespace DTO.Entity
         public int BranchId { get; set; }
         public int SemesterId { get; set; }
         public string SetAction { get; set; }
-        public string ProgramIds { get; set; }
+        public string SemesterIds { get; set; }
         public string SemesterCode { get; set; }
         public string SemesterName { get; set; }
         public bool Active { get; set; }

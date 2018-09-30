@@ -21,7 +21,7 @@ namespace BusinessService.Service
             return BranchSemesterAssociationDS.GetSemesterByBranch(BranchId);
         }
 
-        public string UpdateBranchSemesterAssociation(BranchSemesterAssociation branchSemesterAssociation)
+        public List<BranchSemesterAssociation> UpdateBranchSemesterAssociation(BranchSemesterAssociation branchSemesterAssociation)
         {
             return BranchSemesterAssociationDS.UpdateBranchSemesterAssociation(branchSemesterAssociation);
         }
