@@ -10,7 +10,7 @@ namespace BusinessService.IService
     public interface IProgramBranchAssociationService
     {
         List<ProgramBranchAssociation> GetProgramByBranch(int BranchId);
-        string UpdateProgramBranchAssociation(ProgramBranchAssociation programBranchAssociation);
+        List<ProgramBranchAssociation> UpdateProgramBranchAssociation(ProgramBranchAssociation programBranchAssociation);
         List<ProgramBranchAssociation> GetProgramBranchNotMapped(int BranchId);
     }
 }

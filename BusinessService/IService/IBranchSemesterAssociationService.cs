@@ -10,7 +10,7 @@ namespace BusinessService.IService
     public interface IBranchSemesterAssociationService
     {
         List<BranchSemesterAssociation> GetSemesterByBranch(int BranchId);
-        string UpdateBranchSemesterAssociation(BranchSemesterAssociation branchSemesterAssociation);
+        List<BranchSemesterAssociation> UpdateBranchSemesterAssociation(BranchSemesterAssociation branchSemesterAssociation);
         List<BranchSemesterAssociation> GetBranchSemesterNotMapped(int BranchId);
     }
 }

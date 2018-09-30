@@ -21,7 +21,7 @@ namespace BusinessService.Service
             return ProgramBranchAssociationDS.GetProgramByBranch(BranchId);
         }
 
-        public string UpdateProgramBranchAssociation(ProgramBranchAssociation programBranchAssociation)
+        public List<ProgramBranchAssociation> UpdateProgramBranchAssociation(ProgramBranchAssociation programBranchAssociation)
         {
             return ProgramBranchAssociationDS.UpdateProgramBranchAssociation(programBranchAssociation);
         }
