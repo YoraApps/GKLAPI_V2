@@ -11,7 +11,7 @@ namespace BusinessService.IService
     {
         List<Batch> GetBatch();
         List<Batch> GetAcademicYear();
-        string InUpBatch(Batch batch);
+        List<Batch> InUpBatch(Batch batch);
         List<Batch> GetActiveBatch();
     }
 }
