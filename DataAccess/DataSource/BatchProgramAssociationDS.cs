@@ -46,7 +46,7 @@ namespace DataAccess.DataSource
                             new SqlParameter("@BatchId", batchProgramAssociation.BatchId)
             };
 
-            ds = objHelper.ExecDataSetProc("Gkl_USP_UpdateProgramBatchAssociation", sqlParameter);
+            ds = objHelper.ExecDataSetProc("Gkl_USP_UpdateBatchProgramAssociation", sqlParameter);
 
             List<BatchProgramAssociation> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
