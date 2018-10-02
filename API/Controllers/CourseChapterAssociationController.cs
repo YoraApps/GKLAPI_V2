@@ -17,7 +17,7 @@ namespace API.Controllers
         [HttpGet]
         public IHttpActionResult GetChapterByCourse(int CourseId)
         {
-            return Ok(new { results = courseChapterAssociationService.GetCourseChapterNotMapped(CourseId) });
+            return Ok(new { results = courseChapterAssociationService.GetChapterByCourse(CourseId) });
         }
         public IHttpActionResult GetProgramBatchNotMapped(int CourseId)
         {
