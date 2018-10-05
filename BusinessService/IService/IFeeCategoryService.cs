@@ -11,5 +11,6 @@ namespace BusinessService.IService
     {
         List<FeeCategory> GetFeeCategory();
         string UpdateFeeCategory(FeeCategory feeCategory);
+        List<FeeCategory> GetAllActiveFeeCategory();
     }
 }

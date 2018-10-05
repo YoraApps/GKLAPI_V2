@@ -11,6 +11,11 @@ namespace BusinessService.Service
 {
     public class FeeCategoryService : IFeeCategoryService
     {
+        public List<FeeCategory> GetAllActiveFeeCategory()
+        {
+            return FeeCategoryDS.GetActiveFeeCategory();
+        }
+
         public List<FeeCategory> GetFeeCategory()
         {
             return FeeCategoryDS.GetAllFeeCategory();

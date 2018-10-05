@@ -11,6 +11,11 @@ namespace BusinessService.Service
 {
     public class FeeTypeService : IFeeTypeService
     {
+        public List<FeeType> GetAllActiveFeeType()
+        {
+            return FeeTypeDS.GetActiveFeeType();
+        }
+
         public List<FeeType> GetFeeType()
         {
             return FeeTypeDS.GetAllFeeType();

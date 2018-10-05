@@ -12,6 +12,27 @@ namespace DataAccess.DataSource
 {
     public static class FeeTypeDS
     {
+
+        public static List<FeeType> GetActiveFeeType()
+        {
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
+            ds = objHelper.ExecDataSetProc("GKL_USP_GetActiveFeeType");
+
+            List<FeeType> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new FeeType
+            {
+                FeeTypeId = row.Field<int>("FeeTypeId"),
+                FeeTypeName = Common.ConvertFromDBVal<string>(row["FeeTypeName"]),
+                FeeTypeDescription = Common.ConvertFromDBVal<string>(row["FeeTypeDescription"]),
+
+
+            }).ToList();
+
+            return objlm;
+        }
+
         public static List<FeeType> GetAllFeeType()
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());

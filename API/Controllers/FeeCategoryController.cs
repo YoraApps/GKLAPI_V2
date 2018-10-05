@@ -14,6 +14,11 @@ namespace API.Controllers
     {
         private IFeeCategoryService feeCategoryService = new FeeCategoryService();
         [HttpGet]
+        public IHttpActionResult GetActiveFeeCategory()
+        {
+            return Ok(new { results = feeCategoryService.GetAllActiveFeeCategory() });
+        }
+        [HttpGet]
         public IHttpActionResult Get()
         {
             return Ok(new { results = feeCategoryService.GetFeeCategory() });

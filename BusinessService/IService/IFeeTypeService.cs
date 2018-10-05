@@ -11,5 +11,6 @@ namespace BusinessService.IService
     {
         List<FeeType> GetFeeType();
         string UpdateFeeType(FeeType feeType);
+        List<FeeType> GetAllActiveFeeType();
     }
 }

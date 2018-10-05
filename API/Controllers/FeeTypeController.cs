@@ -14,6 +14,11 @@ namespace API.Controllers
     {
         private IFeeTypeService feeTypeService = new FeeTypeService();
         [HttpGet]
+        public IHttpActionResult GetActiveFeeType()
+        {
+            return Ok(new { results = feeTypeService.GetAllActiveFeeType() });
+        }
+        [HttpGet]
         public IHttpActionResult Get()
         {
             return Ok(new { results = feeTypeService.GetFeeType() });
