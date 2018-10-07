@@ -10,7 +10,7 @@ namespace BusinessService.IService
     public interface IFeeCategoryService
     {
         List<FeeCategory> GetFeeCategory();
-        string UpdateFeeCategory(FeeCategory feeCategory);
+        FeeCategory UpdateFeeCategory(FeeCategory feeCategory);
         List<FeeCategory> GetAllActiveFeeCategory();
     }
 }
