@@ -21,7 +21,7 @@ namespace BusinessService.Service
             return FeeCategoryDS.GetAllFeeCategory();
         }
 
-        public string UpdateFeeCategory(FeeCategory feeCategory)
+        public FeeCategory UpdateFeeCategory(FeeCategory feeCategory)
         {
             return FeeCategoryDS.UpdateFeeCategory(feeCategory);
         }

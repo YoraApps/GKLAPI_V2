@@ -54,7 +54,7 @@ namespace DataAccess.DataSource
             return objlm;
         }
 
-        public static string UpdateFeeCategory(FeeCategory feeCategory)
+        public static FeeCategory UpdateFeeCategory(FeeCategory feeCategory)
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
 
@@ -65,11 +65,21 @@ namespace DataAccess.DataSource
                             new SqlParameter("@FeeCategoryDescription ", feeCategory.FeeCategoryDescription)
 
             };
+            DataSet ds = new DataSet();
+            ds = objHelper.ExecDataSetProc("GKL_USP_UpdateFeeCategory", sqlParameter);
 
-            Object obj = objHelper.ExecScalarProc("GKL_USP_UpdateFeeCategory", sqlParameter);
-            string status = "updated";
-            objHelper.Dispose();
-            return status;
+            List<FeeCategory> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new FeeCategory
+            {
+                FeeCategoryId = row.Field<int>("FeeCategoryId"),
+                FeeCategoryName = Common.ConvertFromDBVal<string>(row["FeeCategoryName"]),
+                FeeCategoryDescription = Common.ConvertFromDBVal<string>(row["FeeCategoryDescription"]),
+                Active = row.Field<bool>("Active")
+
+
+            }).ToList();
+            return objlm[0];
         }
     }
 }
