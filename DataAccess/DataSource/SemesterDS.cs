@@ -16,7 +16,7 @@ namespace DataAccess.DataSource
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetSemester");
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetActiveSemester");
 
             List<Semester> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
@@ -25,8 +25,31 @@ namespace DataAccess.DataSource
                 SemesterId = row.Field<int>("SemesterId"),
                 SemesterCode = Common.ConvertFromDBVal<string>(row["SemesterCode"]),
                 SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"]),
-                Active = row.Field<bool>("Active")
+                BranchId = row.Field<int>("BranchId"),
+               
 
+
+            }).ToList();
+
+            return objlm;
+        }
+        public static List<Semester> GetSemesterByBranch(int BranchId)
+        {
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@BranchId", BranchId)
+            };
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetSemesterByBranch", sqlParameter);
+            List<Semester> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new Semester
+            {
+                SemesterId = row.Field<int>("SemesterId"),
+                SemesterCode = Common.ConvertFromDBVal<string>(row["SemesterCode"]),
+                SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"]),
+                BranchId = row.Field<int>("BranchId"),
+                Active = row.Field<bool>("Active")
 
             }).ToList();
 
@@ -41,7 +64,8 @@ namespace DataAccess.DataSource
                             new SqlParameter("@SetAction", semester.SetAction.ToUpper()),
                             new SqlParameter("@SemesterId", semester.SemesterId),
                             new SqlParameter("@SemesterCode", semester.SemesterCode),
-                            new SqlParameter("@SemesterName ", semester.SemesterName)
+                            new SqlParameter("@SemesterName ", semester.SemesterName),
+                            new SqlParameter("@BranchId",semester.BranchId)
 
             };
 

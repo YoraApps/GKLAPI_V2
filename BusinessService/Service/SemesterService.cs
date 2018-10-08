@@ -16,6 +16,11 @@ namespace BusinessService.Service
             return SemesterDS.GetAllSemester();
         }
 
+        public List<Semester> GetSemesterByBranch(int BranchId)
+        {
+            return SemesterDS.GetSemesterByBranch(BranchId);
+        }
+
         public string UpdateSemester(Semester semester)
         {
             return SemesterDS.UpdateSemester(semester);

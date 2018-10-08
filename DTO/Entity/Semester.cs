@@ -13,5 +13,6 @@ namespace DTO.Entity
         public string SemesterCode { get; set; }
         public string SemesterName { get; set; }
         public bool Active { get; set; }
+        public int BranchId { get; set; }
     }
 }
