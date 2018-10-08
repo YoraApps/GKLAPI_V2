@@ -35,6 +35,11 @@ namespace API.Controllers
         {
             return Ok(new { results = courseService.GetActiveCourse() });
         }
+        [HttpGet]
+        public IHttpActionResult GetCourseBySemester(int SemesterId)
+        {
+            return Ok(new { results = courseService.GetCourseBySemester(SemesterId) });
+        }
 
     }
 }
