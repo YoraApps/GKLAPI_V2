@@ -21,6 +21,11 @@ namespace BusinessService.Service
             return CourseDS.GetAllCourse();
         }
 
+        public List<Course> GetCourseBySemester(int SemesterId)
+        {
+            return CourseDS.GetCourseBySemester(SemesterId);
+        }
+
         public List<Course> GetCourseType()
         {
             return CourseDS.GetAllCourseType();

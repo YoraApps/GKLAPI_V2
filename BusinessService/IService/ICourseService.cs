@@ -13,5 +13,6 @@ namespace BusinessService.IService
         List<Course> GetCourseType();
         string UpdateCourse(Course course);
         List<Course> GetActiveCourse();
+        List<Course> GetCourseBySemester(int SemesterId);
     }
 }

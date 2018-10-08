@@ -16,7 +16,7 @@ namespace DataAccess.DataSource
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetSemester");
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetActiveSemester");
 
             List<Semester> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
@@ -24,8 +24,7 @@ namespace DataAccess.DataSource
             {
                 SemesterId = row.Field<int>("SemesterId"),
                 SemesterCode = Common.ConvertFromDBVal<string>(row["SemesterCode"]),
-                SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"]),
-                Active = row.Field<bool>("Active")
+                SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"])
 
 
             }).ToList();
