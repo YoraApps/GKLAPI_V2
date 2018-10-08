@@ -13,5 +13,6 @@ namespace DTO.Entity
         public string BranchCode { get; set; }
         public string BranchName { get; set; }
         public bool Active { get; set; }
+        public int ProgramId { get; set; }
     }
 }

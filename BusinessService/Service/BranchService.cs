@@ -16,6 +16,11 @@ namespace BusinessService.Service
             return BranchDS.GetAllBranch();
         }
 
+        public List<Branch> GetBranchByProgram(int ProgramId)
+        {
+            return BranchDS.GetBranchByProgram(ProgramId);
+        }
+
         public string InUpBranch(Branch branch)
         {
             return BranchDS.UpdateBranch(branch);

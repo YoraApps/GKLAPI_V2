@@ -18,11 +18,14 @@ namespace API.Controllers
         {
             return Ok(new { results = branchService.GetBranch() });
         }
-
         [HttpPost]
         public IHttpActionResult UpdateBranch(Branch branch)
         {
             return Ok(new { results = branchService.InUpBranch(branch) });
+        }
+        public IHttpActionResult GetBranchByProgram(int ProgramId)
+        {
+            return Ok(new { results = branchService.GetBranchByProgram(ProgramId) });
         }
     }
 }

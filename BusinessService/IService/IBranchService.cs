@@ -11,5 +11,6 @@ namespace BusinessService.IService
     {
         List<Branch> GetBranch();
         string InUpBranch(Branch branch);
+        List<Branch> GetBranchByProgram(int ProgramId);
     }
 }
