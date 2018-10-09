@@ -16,7 +16,7 @@ namespace DataAccess.DataSource
         {
             AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
             DataSet ds = new DataSet();
-            ds = objHelper.ExecDataSetProc("Gkl_USP_GetBranch");
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetActiveBranch");
 
             List<Branch> objlm = null;
             objlm = ds.Tables[0].AsEnumerable()
@@ -25,8 +25,34 @@ namespace DataAccess.DataSource
                 BranchId = row.Field<int>("BranchId"),
                 BranchCode = Common.ConvertFromDBVal<string>(row["BranchCode"]),
                 BranchName = Common.ConvertFromDBVal<string>(row["BranchName"]),
-                Active = row.Field<bool>("Active")
+                Active = row.Field<bool>("Active"),
+                ProgramId = row.Field<int>("ProgramId"),
 
+
+            }).ToList();
+
+            return objlm;
+        }
+        public static List<Branch> GetBranchByProgram(int ProgramId)
+        {
+            AdoHelper objHelper = new AdoHelper(ConfigurationManager.ConnectionStrings["con"].ToString());
+            DataSet ds = new DataSet();
+
+            SqlParameter[] sqlParameter = {
+                            new SqlParameter("@ProgramId", ProgramId)
+            };
+
+            ds = objHelper.ExecDataSetProc("Gkl_USP_GetBranchByProgram", sqlParameter);
+
+            List<Branch> objlm = null;
+            objlm = ds.Tables[0].AsEnumerable()
+            .Select(row => new Branch
+            {
+                BranchId = row.Field<int>("BranchId"),
+                BranchCode = Common.ConvertFromDBVal<string>(row["BranchCode"]),
+                BranchName = Common.ConvertFromDBVal<string>(row["BranchName"]),
+                Active = row.Field<bool>("Active"),
+                ProgramId = row.Field<int>("ProgramId"),
 
             }).ToList();
 
@@ -40,7 +66,8 @@ namespace DataAccess.DataSource
                             new SqlParameter("@SetAction", branch.SetAction.ToUpper()),
                             new SqlParameter("@BranchId", branch.BranchId),
                             new SqlParameter("@BranchCode", branch.BranchCode),
-                            new SqlParameter("@BranchName ", branch.BranchName)
+                            new SqlParameter("@BranchName ", branch.BranchName),
+                            new SqlParameter("@ProgramId ", branch.ProgramId)
 
             };
 
