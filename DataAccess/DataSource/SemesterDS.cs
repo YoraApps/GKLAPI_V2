@@ -25,9 +25,7 @@ namespace DataAccess.DataSource
                 SemesterId = row.Field<int>("SemesterId"),
                 SemesterCode = Common.ConvertFromDBVal<string>(row["SemesterCode"]),
                 SemesterName = Common.ConvertFromDBVal<string>(row["SemesterName"]),
-                BranchId = row.Field<int>("BranchId"),
-               
-
+                BranchId = row.Field<int>("BranchId")
 
             }).ToList();
 
