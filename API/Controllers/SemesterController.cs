@@ -18,7 +18,10 @@ namespace API.Controllers
         {
             return Ok(new { results = semesterService.GetSemester() });
         }
-
+        public IHttpActionResult GetSeesterByBranch(int BranchId)
+        {
+            return Ok(new { results = semesterService.GetSemesterByBranch(BranchId) });
+        }
         [HttpPost]
         public IHttpActionResult UpdateSemester(Semester semester)
         {

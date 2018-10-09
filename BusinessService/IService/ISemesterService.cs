@@ -11,5 +11,6 @@ namespace BusinessService.IService
     {
         List<Semester> GetSemester();
         string UpdateSemester(Semester semester);
+        List<Semester> GetSemesterByBranch(int BranchId);
     }
 }
